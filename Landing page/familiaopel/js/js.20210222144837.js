@@ -1,0 +1,20 @@
+/**
+ * @license
+ * @date      Mon Feb 22 2021 15:53:02 GMT+0100 (Central European Standard Time)
+ * @time      1614005586312
+ * @brand     opel2020
+ * @version   2.10.2-00000
+
+ * Copyright (c) 2021 General Motors Corp. All Rights Reserved.
+ * This material is solely and exclusively owned by General Motors and may not
+ * be reproduced elsewhere without prior written approval.
+
+ */"use strict";window.gmwp=window.gmwp||{_:null,$:null,Tc:null,YT:null,conf:{cmp:{},global:{}},connectors:{},comps:{},filterStores:[],document:{},dom:{},mod:{},ui:{},util:{}},
+/**
+ * @license Modernizr v2.8.3
+ * www.modernizr.com
+ * Copyright (c) Faruk Ates, Paul Irish, Alex Sexton
+ * Available under the BSD and MIT licenses: www.modernizr.com/license/
+ *
+ */
+window.Modernizr=function(i,d,l){function e(e,t,n,i){var r,o,l,s,u=d.createElement("div"),a=d.body,c=a||d.createElement("body");if(parseInt(n,10))for(;n--;)(l=d.createElement("div")).id=i?i[n]:f+(n+1),u.appendChild(l);return r=["&#173;",'<style id="s',f,'">',e,"</style>"].join(""),u.id=f,(a?u:c).innerHTML+=r,c.appendChild(u),a||(c.style.background="",c.style.overflow="hidden",s=p.style.overflow,p.style.overflow="hidden",p.appendChild(c)),o=t(u,e),a?u.parentNode.removeChild(u):(c.parentNode.removeChild(c),p.style.overflow=s),!!o}var t,n,r={},p=d.documentElement,f="modernizr",o=d.createElement(f),s=o.style,u=d.createElement("input"),a=" -webkit- -moz- -o- -ms- ".split(" "),c="Webkit Moz O ms",m=c.split(" "),h=c.toLowerCase().split(" "),v={},y={},w={},b=[],g=(b.slice,{}.hasOwnProperty);function x(e){s.cssText=e}function C(e,t){return typeof e===t}function T(e,t){for(var n in e){var i=e[n];if(!~(""+i).indexOf("-")&&s[i]!==l)return"pfx"!=t||i}return!1}function j(e,t,n){var i=e.charAt(0).toUpperCase()+e.slice(1),r=(e+" "+m.join(i+" ")+i).split(" ");return C(t,"string")||C(t,"undefined")?T(r,t):function(e,t,n){for(var i in e){var r=t[e[i]];if(r!==l)return!1===n?e[i]:C(r,"function")?r.bind(n||t):r}return!1}(r=(e+" "+h.join(i+" ")+i).split(" "),t,n)}for(var k in n=C(g,"undefined")||C(g.call,"undefined")?function(e,t){return t in e&&C(e.constructor.prototype[t],"undefined")}:function(e,t){return g.call(e,t)},v.webgl=function(){return!!i.WebGLRenderingContext},v.touch=function(){var t;return"ontouchstart"in i||i.DocumentTouch&&d instanceof DocumentTouch?t=!0:e(["@media (",a.join("touch-enabled),("),f,")","{#modernizr{top:9px;position:absolute}}"].join(""),function(e){t=9===e.offsetTop}),t},v.csstransforms=function(){return!!j("transform")},v.csstransitions=function(){return j("transition")},v)n(v,k)&&(t=k.toLowerCase(),r[t]=v[k](),b.push((r[t]?"":"no-")+t));return r.input||(r.input=function(e){for(var t=0,n=e.length;t<n;t++)w[e[t]]=!!(e[t]in u);return w.list&&(w.list=!(!d.createElement("datalist")||!i.HTMLDataListElement)),w}("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")),r.inputtypes=function(e){for(var t,n,i,r=0,o=e.length;r<o;r++)u.setAttribute("type",n=e[r]),(t="text"!==u.type)&&(u.value=":)",u.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(n)&&u.style.WebkitAppearance!==l?(p.appendChild(u),t=(i=d.defaultView).getComputedStyle&&"textfield"!==i.getComputedStyle(u,null).WebkitAppearance&&0!==u.offsetHeight,p.removeChild(u)):/^(search|tel)$/.test(n)||(t=/^(url|email)$/.test(n)?u.checkValidity&&!1===u.checkValidity():":)"!=u.value)),y[e[r]]=!!t;return y}("search tel url email datetime date month week time datetime-local number range color".split(" "))),x(""),o=u=null,r._version="2.8.3",r._prefixes=a,r._domPrefixes=h,r._cssomPrefixes=m,r.testProp=function(e){return T([e])},r.testAllProps=j,r.testStyles=e,r.prefixed=function(e,t,n){return t?j(e,t,n):j(e,"pfx")},p.className=p.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+" js "+b.join(" "),r}(this,this.document);

@@ -1,0 +1,2578 @@
+@import "reset.css";
+@font-face {
+    font-family: 'OpelSansCondensedHeadline';
+    src: url('../fonts/OpelSansCondensedHeadline.eot');
+    src: url('../fonts/OpelSansCondensedHeadline.eot') format('embedded-opentype'),
+         url('../fonts/OpelSansCondensedHeadline.woff2') format('woff2'),
+         url('../fonts/OpelSansCondensedHeadline.woff') format('woff'),
+         url('../fonts/OpelSansCondensedHeadline.ttf') format('truetype'),
+         url('../fonts/OpelSansCondensedHeadline.svg#OpelSansCondensedHeadline') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'OpelNextLight';
+	src: url('../fonts/OpelNextLight.eot');
+	src: url('../fonts/OpelNextLight.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/OpelSansCondensedHeadline.woff2') format('woff2'),
+		 url('../fonts/OpelNextLight.woff') format('woff'),
+		 url('../fonts/OpelNextLight.ttf') format('truetype'),
+		 url('../fonts/OpelNextLight.svg#OpelNextLight') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+html, body{
+    /*overflow: hidden !important;*/
+    height: 100%;
+    width: 100%;
+    background: #261e16;
+}
+.preloader{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 99999999;
+    background: #000;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 800ms ease;
+    -ms-transition: all 800ms ease;
+    transition: all 800ms ease;
+}
+.preloader.active{
+    opacity: 1;
+    visibility: visible;
+}
+#loader {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #f7ff14;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+#loader:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #f7ff11;
+    -webkit-animation: spin 3s linear infinite;
+    animation: spin 3s linear infinite;
+}
+#loader:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #ffd201;
+    -webkit-animation: spin 1.5s linear infinite;
+    animation: spin 1.5s linear infinite;
+}
+.preloader .logo{
+    background: url(../img/opel-loader.png) no-repeat center center;
+    width: 60px;
+    height: 60px;
+    background-size: contain;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    margin: auto;
+}
+@-webkit-keyframes spin {
+    0%   {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    0%   {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+.flood{
+    opacity: 0;
+    height: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 0;
+    font-size: 0;
+    box-sizing: initial;
+    position: absolute;
+    z-index: -1;
+}
+#fp-nav ul li a span, .fp-slidesNav ul li a span{
+	background:#f7ff14;
+}
+.menu-nav{
+    float: left;
+    height: 100%;
+    line-height: 40px;
+}
+.menu-nav li{
+	float: left;
+	margin-right: 14px;
+}
+.menu-nav li:before{
+    color: #f7d900;
+    content: '/';
+    display: inline-block;
+    font-size: 1.375rem;
+    padding: 0 .5rem;
+    -webkit-transform: rotate(18deg);
+    transform: rotate(18deg);
+}
+.menu-nav li a{
+	width: auto;
+	color: #000;
+	font-size: 13px;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-family: 'OpelSansCondensedHeadline';
+}
+.menu-nav li  a:hover{
+	border-bottom: 4px solid #f7d900;
+}
+
+.menu-nav-mobile{
+	width: 80%;
+    height: 95%;
+    position: fixed;
+    left: 0;
+    top: 34px;
+    background: rgba(0, 0, 0, 0.90);
+    z-index: 99999;
+    display: none;
+    padding: 5%;
+    -webkit-transition: all 600ms ease;
+    -ms-transition: all 600ms ease;
+    transition: all 600ms ease;
+    -webkit-transform: translateX(-120%);
+    -ms-transform: translateX(-120%);
+    transform: translateX(-120%);
+}
+.menu-nav-mobile.active{
+	-webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    transform: translateX(0%);
+}
+.menu-nav-mobile li{
+	display: block;
+	margin-left: 2%;
+	margin-bottom: 10px;
+}
+.menu-nav-mobile li a{
+	width: 100%;
+	color: #fff;
+	font-size: 16px;
+	display: block;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-family: 'OpelSansCondensedHeadline';
+}
+.menu-nav-mobile li  a:hover{
+	border-bottom: 4px solid #f7d900;
+}
+.header .ico-mobile{
+	background: url('../img/ico-mobile.jpg') no-repeat center center;
+    background-size: contain;
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    float: left;
+    display: none;
+}
+.header .ico-cerrar-mobile{
+    height: 34px;
+    width: 34px;
+    text-align: center;
+    line-height: 34px;
+    display: inline-block;
+    float: left;
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    border-right: 1px solid #f7d900;
+    font-family: 'OpelSansCondensedHeadline';
+    display: none;
+}
+/***********************************************/
+#section0{
+	background:url('../img/back-newcorsa2021-section1.jpg') no-repeat center center;
+	background-size:cover;
+	border-bottom: 1px solid #fff;
+}
+.header{
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+.header .logo-container {
+    display: inline-block;
+    float: right;
+}
+.header .logo-container .logo-header {
+    height: 40px;
+    width: auto;
+}
+.header .ico{
+    background: url('../img/ico-casa.jpg') no-repeat center center;
+    background-size: contain;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+.arrow-down{
+    background: url('../img/arrow-down.png') no-repeat center center;
+    background-size: contain;
+    width: 2% !important;
+    padding-bottom: 4%;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 3%;
+    border: 0;
+    margin: auto;
+    outline: 0;
+    -webkit-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+.arrow-down:hover{
+	width: 3% !important;
+    padding-bottom: 5%;
+}
+#section0 .landing-cont .logo-opel{
+    background: url('../img/logo-opel.png') no-repeat center center;
+    background-size: contain;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    display: block;
+    width: 100px;
+    height: 100px;
+}
+#section0 .landing-cont .log-newcorsa{
+    background: url('../img/logo-newCorsa-2021.png') no-repeat top center;
+    background-size: contain;
+    width: 38%;
+    max-width: 480px;
+    height: auto;
+    padding-bottom: 18%;
+    display: block;
+    position: absolute;
+    top: 12%;
+    left: 4%;
+    -webkit-transition: all 800ms ease;
+    -ms-transition: all 800ms ease;
+    transition: all 800ms ease;
+}
+#section0 .landing-cont .log-25und{
+    background: url('../img/logo-25uni.png') no-repeat top center;
+    background-size: contain;
+    width: 10%;
+    height: auto;
+    padding-bottom: 11%;
+    display: block;
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    -webkit-transition: all 800ms ease;
+    -ms-transition: all 800ms ease;
+    transition: all 800ms ease;
+    display: none;
+}
+#section0 .landing-cont .btn-cotizar{
+    background: url('../img/btn-cotizar-ahora-2021.png') no-repeat top center;
+	background-size: contain;
+    width: 280px;
+    height: 31px;
+    max-width: 398px;
+    position: absolute;
+    bottom: 12%;
+    display: block;
+    cursor: pointer;
+    right: 0;
+    left: 0;
+    margin: auto;
+    z-index: 100;
+    -webkit-transition: all 800ms ease;
+    -ms-transition: all 800ms ease;
+    transition: all 800ms ease;
+}
+#section0 .landing-cont .btn-cotizar:hover{
+	opacity: .6;
+	-webkit-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+#section0 .landing-cont .bottom-sect{
+	width: 33%;
+    position: absolute;
+    bottom: 4%;
+    right: 0;
+    left: 0;
+    margin: auto;	
+    -webkit-transition: all 800ms ease;
+    -ms-transition: all 800ms ease;
+    transition: all 800ms ease;
+}
+#section0 .landing-cont .bottom-sect .thumbs-specs{
+    background: url(../img/thumbs-specs.png) no-repeat top center;
+    background-size: contain;
+    width: 87%;
+    height: auto;
+    padding-bottom: 28%;
+    display: block;
+    margin: auto;
+    display: none;
+}
+#section0 .landing-cont .bottom-sect .btn-cart{
+    background: url(../img/btn-caracte.png) no-repeat top center;
+    background-size: contain;
+    width: 60%;
+    height: auto;
+    padding-bottom: 9%;
+    display: block;
+    margin: 2% auto 0 auto;
+}
+#section0 .landing-cont .bottom-sect .btn-cart:hover{
+	opacity: .6;
+	-webkit-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+#section0 .info-back{
+    position: absolute;
+    bottom: 2%;
+    left: 2%;	
+    color: #fff;
+    font-size: 13px;
+    display: block;
+    font-family: 'OpelSansCondensedHeadline';
+}
+#section0 .btns-right{
+	position: absolute;
+	right: 0;
+	bottom: 4%;
+}
+#section0 .btns-r-new{
+    position: absolute;
+    right: -10px;
+    bottom: 4%;
+    display: inline-block;
+    width: auto;
+    text-align: right;	
+    display: none;
+}
+#section0 .btns-r-new .btn-cotizar-expo{
+    background: url(../img/btn-cotizar-expo.png) no-repeat center center;
+    background-size: contain;
+    width: 200px;
+    height: 50px;
+    display: block;
+	-webkit-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+#section0 .btns-r-new .btn-test-expo{
+	background: url('../img/btn-test-expo.png') no-repeat center center;
+    background-size: contain;
+	width: 204px;
+    height: 54px;
+    display: inline-block;
+   	-webkit-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+#section0 .btns-r-new .btn-cotizar-expo:hover,
+#section0 .btns-r-new .btn-test-expo:hover{
+	opacity: .6;
+}
+/*******************************************/
+#compromisos1{
+	background:url('../img/BG_compromisos_Top.jpg') no-repeat center left;
+    background-size: cover;
+    position: relative;
+    padding: 7vw 0;
+    border-bottom: 1px solid #fff;
+}
+#compromisos1 .tit-compromisos{
+    width: 40vw;
+    position: relative;
+    max-width: 535px;
+    margin-bottom: 1%;
+}
+#compromisos1 .tit-compromisos img{
+	width: 100%;
+	display: block;
+}
+#compromisos1 .txt-cont{
+    color: #fff;
+    font-size: 18px;
+    text-align: left;
+    margin-left: 3%;
+    width: 30vw;
+    line-height: 22px;
+    font-family: 'OpelNextLight';
+    font-weight: 100;
+}
+
+#compromisos2{
+	background:#000;
+}
+/*******************************************/
+#section1 .versiones-cont{
+	background: url(../img/bg-autos-section.jpg) no-repeat center center;
+    background-size: cover;
+    width: 100%;
+    height: 40%;
+}
+#section1 .versiones-cont .btn-legal{
+    width: auto;
+    text-align: left;
+    right: 2vw;
+    font-size: 11px;
+    font-family: 'OpelSansCondensedHeadline';
+    color: #fff;
+    top: 2vw;
+    text-transform: uppercase;
+    display: block;
+    position: absolute;
+    text-decoration: none;
+    
+}
+#section1 .versiones-cont .btn-legal:hover{
+	opacity: .6;
+}
+#section1 .versiones-cont .legales{
+    position: absolute;
+    left: 2vw;
+    bottom: 1.5vw;
+    text-align: left;
+}
+#section1 .versiones-cont .legales p{
+    width: auto;
+    text-align: left;
+    font-size: 11px;
+    font-family: 'OpelSansCondensedHeadline';
+    color: #fff;
+    display: block;
+    
+}
+#section1 .border-sep{
+	width: 100%;
+	height: 2px;
+	background: #f7d900;
+	position: absolute;
+	left: 0;
+	top:60%;
+	z-index: 10;
+}
+#section1 .versiones-cont .tit{
+    width: auto;
+    text-align: left;
+    display: inline-block;
+    padding-left: 2vw;
+    font-size: 1.5vw;
+    font-family: 'OpelSansCondensedHeadline';
+    color: #fff;
+    text-transform: uppercase;
+    position: absolute;
+    left: 3%;
+    top: 5%;
+}
+#section1 .versiones-cont .tit b{
+    color: #f7ff14;
+    font-weight: 800;
+}
+#section1 .versiones-cont .tit a{
+    color: #fff;
+    font-size: 11px;
+    text-decoration: none;
+    margin-right: 2%;
+    float: right;
+    text-shadow: none;
+}
+#section1 .versiones-cont .tit a:hover{
+    color: #f7d900;
+}
+#section1 .thumb-cont{
+	width: 100%;
+    z-index: 11;
+    padding: 5% 0;
+}
+#section1 .thumb-cont .version{
+    width: 17%;
+    height: 100%;
+    display: inline-block;
+    margin: 0 1%;
+}
+#section1 .thumb-cont .thumb-auto{
+    width: 90%;
+    display: block;
+    margin: auto;
+    position: relative;
+    -webkit-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+.thumb-auto:hover {
+    opacity: .6;
+}
+.version h3{
+	color: #fff;
+    font-size: 16px;
+    text-align: center;
+    font-family: 'OpelSansCondensedHeadline';
+    text-transform: uppercase;
+}
+.version h4{
+	color: #fff;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 5px;
+    font-family: 'OpelSansCondensedHeadline';
+    text-transform: uppercase;
+}
+.version img{
+	width: 100%;
+	display: block;
+	margin: 10px auto;
+}
+.version p{
+	color: #fff;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 8px;
+    text-transform: uppercase;
+    font-family: 'OpelSansCondensedHeadline';
+}
+.version p.precio{
+	font-size: 14px;
+}
+.version p span{
+    font-size: 10px;
+    margin-top: 4px;
+    display: block;
+}
+.version .info-extra{
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #fff;
+    display: block;
+    font-family: 'OpelSansCondensedHeadline';
+    margin-top: 4px;
+}
+.thumb-auto .hover-modelo{
+	background: url('../img/ico-plus.png') no-repeat center center;
+	background-size:26%; 
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top:0;
+	opacity: 0;
+	    -webkit-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+.thumb-auto:hover .hover-modelo{
+    opacity: 1;
+}
+.version .btn-reservar-v{
+	width: auto;
+    padding: 0.6vw 2vw;
+    text-align: center;
+    display: block;
+    border: 1px solid #fff;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1vw;
+    display: inline-block;
+    margin: .5vw auto;
+    font-family: 'OpelSansCondensedHeadline';
+    -webkit-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+.version .btn-reservar-v:hover{
+	background: #f7ff14;
+	border: 1px solid #f7ff14;
+	color: #000;
+}
+#section2 .unboxing-cont{
+    width: 100%;
+    height: 40%;
+    text-align: center;
+    padding: 2% 0;
+}
+.section .log-opelcl{
+	background: url(../img/log-opelcl.png) no-repeat center center;
+    background-size: cover;
+    width: 8vw;
+    height: 2vw;
+    bottom: 0;
+    position: absolute;
+    left: 0;
+}
+.section .log-opelblack{
+	background: url(../img/log-opelnegro.png) no-repeat center center;
+    background-size: cover;
+    width: 12vw;
+    height: 3vw;
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    z-index: 100000;
+}
+#section1{
+	background: #000;
+}
+#section2 .unboxing-cont .tit-unboxing{
+	background: url(../img/logo-Unboxing2x.png) no-repeat center center;
+	background-size: contain;
+    width: 16%;
+    max-width: 300px;
+    padding-bottom: 10%;
+    height: auto;
+    margin-top: 2%;
+    margin-right: 4%;
+    display: inline-block;
+}
+#section2 .unboxing-cont .vid-cont{
+    width: 48%;
+    height: auto;
+    margin-top: 2%;
+    display: inline-block;
+    z-index: 1000;
+    vertical-align: top;
+	
+}
+#section2 .unboxing-cont .video{
+	background: url(../img/thumb-vid.jpg) no-repeat center center;
+	background-size: contain;
+    width: 50%;
+    height: auto;
+    padding-bottom: 37%;
+    float: left;
+    cursor: pointer;
+}
+#section2 .unboxing-cont .video:hover{
+	opacity: .6;
+}
+#section2 .unboxing-cont .txt-vid{
+     width: 48%;
+    height: 100%;
+    float: left;
+    padding: 0;
+    margin-left: 2%;
+}
+#section2 .unboxing-cont .ico-vid{
+	background: url(../img/ico-vid.jpg) no-repeat center center;
+	background-size: contain;
+    width: 30px;
+    height: 30px;
+    float: left;
+}
+#section2 .unboxing-cont .txt-vid p{
+    display: block;
+    color: #fff;
+    text-align: left;
+    font-size: 14px;
+    font-family: sans-serif;
+    float: left;
+    margin-top: 5%;
+}
+/***********************************/
+.wrapper-compromisos{
+	width: 100%;
+	display: grid;
+	grid-template-columns:33.3% 33.3% 33.3%;
+	grid-gap: 0;
+	background-color: #000;
+	align-content: center;
+}
+.wrapper-compromisos .comp-block {
+	background-color: #000;
+	color: #fff;
+	padding: 10% 5% ;
+	font-size: 150%;
+	position: relative;
+	-webkit-transition:all 600ms ease;
+	-ms-transition:all 600ms ease;
+	transition:all 600ms ease;
+}
+.wrapper-compromisos .comp-block.b-center:before{
+    content: '';
+    width: 1px;
+    height: 70%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: #fff;
+    margin: auto;
+}
+.wrapper-compromisos .comp-block.b-center:after{
+    content: '';
+    width: 1px;
+    height: 70%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #fff;
+    margin: auto;
+}
+.wrapper-compromisos .comp-block.bl1{
+	background: url('../img/bg-comp-01.jpg') no-repeat 0 0;
+	background-size: cover;
+}
+
+.wrapper-compromisos .comp-block.bl2{
+	background: url('../img/bg-comp-02.jpg') no-repeat center center;
+	background-size: cover;
+}
+/*.wrapper-compromisos .comp-block.bl2:hover{
+	background: url('../img/bg-comp-02-hover.jpg') no-repeat center center;
+	background-size: cover;
+}*/
+.wrapper-compromisos .comp-block.bl3{
+	background: url('../img/bg-comp-03.jpg') no-repeat center center;
+	background-size: cover;
+}
+/*.wrapper-compromisos .comp-block.bl3:hover{
+	background: url('../img/bg-comp-03-hover.jpg') no-repeat center center;
+	background-size: cover;
+}*/
+.wrapper-compromisos .comp-block:hover{
+	/*background: url('../img/bg-comp-01-hover.jpg') no-repeat 0 0;
+	background-size: cover;*/
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */    
+	-webkit-filter: grayscale(90%);
+	-moz-filter: grayscale(90%);
+	-ms-filter: grayscale(90%);
+	filter: grayscale(90%);
+	filter: gray; /* IE 6-9 */
+	background-size: 102%;
+		-webkit-transition:all 600ms ease;
+	-ms-transition:all 600ms ease;
+	transition:all 600ms ease;
+}
+.wrapper-compromisos .comp-block .top-titulo{
+	text-align: center;
+}
+.wrapper-compromisos .comp-block .ico-titulo{
+    width: 60%;
+    max-width: 388px;
+    display: inline-block;
+}
+.wrapper-compromisos .comp-block .sep{
+    width: 2px;
+    padding-bottom: 14%;
+    background: yellow;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 4%;
+}
+.wrapper-compromisos .comp-block h3{
+    font-size: 1rem;
+    color: #fff;
+    display: inline-block;
+    text-align: left;
+    text-transform: uppercase;
+    vertical-align: middle;
+	font-family: 'OpelSansCondensedHeadline';
+}
+.wrapper-compromisos .comp-block .text-cont.textA{
+    width: 340px;
+    height: 100px;
+    margin: 10% auto;
+    padding: 2%;
+    position: relative;
+    display: none;
+}
+.wrapper-compromisos .comp-block .text-cont.textA.active{
+	display: block;
+}
+.wrapper-compromisos .comp-block .text-cont.textB {
+    width: 340px;
+    height: 100px;
+    margin: 10% auto;
+    padding: 5% 4%;
+    border: 1px solid #fff;
+    position: relative;
+    display: none;
+}
+.wrapper-compromisos .comp-block .text-cont.textB.active{
+	display: block;
+}
+.wrapper-compromisos .comp-block .text-cont p{
+	color: #fff;
+    font-size: .75em;
+    text-align: center;
+    margin: auto;
+    line-height: 1.3em;
+    font-family: 'OpelSansCondensedHeadline';
+    font-weight: 200;	
+}
+.wrapper-compromisos .comp-block .text-cont.textB p{
+	font-size: 16px;
+}
+.wrapper-compromisos .comp-block.bl3 .text-cont.textB p {
+    font-size: 13px;
+}
+.wrapper-compromisos .comp-block .btn-plus{
+	background: url('../img/ico-plus.png') no-repeat center center;
+    background-size: contain;
+	width: 34px;
+    height: 34px;
+    color: #fff;
+    display: inline-block;
+    text-transform: uppercase;
+    position: relative;
+    margin: auto;
+    opacity: 0;
+    visibility: hidden;
+}
+.wrapper-compromisos .comp-block .btn-plus.active{
+	opacity: 1;
+	visibility: visible;
+}
+.wrapper-compromisos .comp-block .btn-plus:before {
+	content: 'ver detalle';
+    position: absolute;
+    left: -30px;
+    bottom: -20px;
+    font-family: 'OpelSansCondensedHeadline';
+    font-size: 12px;
+    width: 100px;
+}
+.wrapper-compromisos .comp-block .text-cont .btn-comp{
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 48%;
+    margin: auto;
+    bottom: -12%;
+    max-width: 142px;
+    background: #f7ff14;
+    color: #000;
+    font-family: 'OpelNextLight';
+    font-size: 15px;
+    padding: 4px 0px;
+    text-transform: uppercase;	
+}
+.wrapper-compromisos .comp-block .text-cont .btn-comp.btn-flex{
+    display: inline-block;
+    left: -48%;
+}
+.wrapper-compromisos .comp-block .text-cont .btn-comp.btn-acc{
+	display: inline-block;
+    right: -44%;
+}
+
+.wrapper-compromisos .comp-block .text-cont .btn-comp:hover{
+    background: #f7d900;
+    color: #000;
+    text-decoration: none;
+}
+.wrapper-compromisos .comp-block .text-cont .btn-comp img{
+    width: 100%;
+    display: block;
+}
+.wrapper-compromisos .comp-block .btn-base{
+	color: #fff;
+    font-size: .5em;
+    text-align: center;
+    padding-bottom: 0;
+    font-family: 'OpelSansCondensedHeadline';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 25px;
+    opacity: 0;
+    visibility: hidden;
+}
+.wrapper-compromisos .comp-block .btn-base.active{
+	opacity: 1;
+    visibility: visible;
+}
+/************************************/
+#section2{
+	background: #000;
+    background-size: cover;
+    border-top: 2px solid #fff;
+} 
+#section2 h1{
+    width: auto;
+    text-align: left;
+    display: inline-block;
+    padding-left: 2vw;
+    font-size: 1.5vw;
+    font-family: 'OpelSansCondensedHeadline';
+    text-shadow: 0 0 4px #FFFFFF;
+    color: #fff;
+    top: 50px;
+    text-transform: uppercase;
+    float: left;
+    position: absolute;
+    left: 0;
+}
+.slider-showroom{
+	width: 98%;
+    margin: auto;
+}
+.slider-showroom .intro{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.slider-showroom img{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.slider-showroom .fp-controlArrow.fp-next {
+    background-color: transparent;
+    background: url(../img/slick-next) no-repeat center center;
+    background-size: contain;
+    width: 80px;
+    height: 80px;
+    border: 0;
+    right: 3%;
+    outline: 0;
+}
+.slider-showroom .fp-controlArrow.fp-prev{
+	    background-color: transparent;
+    background: url(../img/slick-prev) no-repeat center center;
+    background-size: contain;
+        width: 80px;
+    height: 80px;
+    border: 0;
+    left: 3%;
+    outline: 0;
+}
+.slider-showroom-mobile{
+	width: 100%;
+	position: relative;
+}
+.slide-thumbs-images-m{
+	display: none;
+	width: 98%;
+	height: auto;
+    margin: auto;
+}
+.slide-thumbs-images-m img{
+	width: 88%;
+	margin: auto;
+	display: block;
+}
+.slide-thumbs-images-m .slick-next {
+    background-color: transparent;
+    background: url(../img/slick-next) no-repeat center center;
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+    border: 0;
+    right: 3%;
+    top:0;
+    bottom:0;
+    margin:auto;
+    position: absolute;
+    text-indent: -200px;
+    overflow: hidden;
+    outline: 0;
+    z-index: 99;
+}
+.slide-thumbs-images-m .slick-prev{
+	    background-color: transparent;
+    background: url(../img/slick-prev) no-repeat center center;
+    background-size: contain;
+        width: 50px;
+    height: 50px;
+    border: 0;
+    left: 3%;
+    top:0;
+    bottom:0;
+    margin:auto;
+    position: absolute;
+    text-indent: -200px;
+    overflow: hidden;
+    outline: 0;
+    z-index: 99;
+}
+/************************************/
+#section3{
+	background: #fff;
+	background-size: cover;
+	border-top: 2px solid #f7d900;
+}
+/************************************/
+.slider-mobile-content{
+    display: none;
+    padding-top: 10% 0;
+}
+
+.slider-mobile-content .fp-tableCell{
+	display: initial;
+}
+.slider-mobile-content .slick-next{
+    background-color: transparent;
+    background: url(../img/slick-next) no-repeat center center;
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+    border: 0;
+    position: absolute;
+    right: 3%;
+    top: -32%;
+    bottom: 0;
+    margin: auto;
+    overflow: hidden;
+    text-indent: -900px;
+    z-index: 999;
+    outline: 0;
+}
+.slider-mobile-content .slick-prev{
+    background-color: transparent;
+    background: url(../img/slick-prev) no-repeat center center;
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+    border: 0;
+    position: absolute;
+    left: 3%;
+    top: -32%;
+    bottom: 0;
+    margin: auto;
+    overflow: hidden;
+    text-indent: -900px;
+    z-index: 999;
+    outline: 0;
+}
+.slider-mobile-content .thumb-auto{
+	position: relative;
+}
+.modal{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition:all 600ms ease;
+    -ms-transition:all 600ms ease;
+    transition:all 600ms ease;
+}
+.modal.active{
+    opacity: 1;
+    visibility: visible;
+}
+.cont-modal{
+    background-color: #000;
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.cont-modal p{
+    font-family: sans-serif;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    padding: 5%;
+}
+.modal .cerrar-modal{
+    color: #fff;
+    position: absolute;
+    right: -4%;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+.modal-video{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+.modal-video.active{
+    opacity: 1;
+    visibility: visible;
+}
+.cont-video{
+    width: 60%;
+    height: 35.6vw;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    opacity: 0;
+    -webkit-transition: all 600ms ease;
+    -ms-transition: all 600ms ease;
+    transition: all 600ms ease;
+    -webkit-transform: translateY(50%);
+    -ms-transform: translateY(50%);
+    transform: translateY(50%);
+}
+.modal-video.active .cont-video{
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    transform: translateY(0%);
+}
+.modal-video .videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+.modal-video .videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.modal-video .cont-video .btn-closevid{
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    font-size: 2vw;
+    text-align: center;
+    line-height: 30px;
+    position: absolute;
+    top: -3vw;
+    right: 0;
+    display: block;
+    text-decoration: none;
+    font-family: 'OpelSansCondensedHeadline';
+    -webkit-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+.modal-video .cont-video .btn-closevid:hover{
+    opacity: .8;
+    -webkit-transform:rotate(180deg);
+    -ms-transform:rotate(180deg);
+    transform:rotate(180deg);
+}
+/**************************/
+.modal-detalle{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition:all 600ms ease;
+    -ms-transition:all 600ms ease;
+    transition:all 600ms ease;
+}
+.modal-detalle.active{
+    opacity: 1;
+    visibility: visible;
+}
+.modal-detalle .cont-detalle{
+    background-color: #000;
+    width: 24%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    overflow: auto;
+    border-left: 2px solid #f7d900;
+    z-index: 1000;
+    -webkit-transition: all 600ms ease-in-out;
+    -ms-transition: all 600ms ease-in-out;
+    transition: all 600ms ease-in-out;
+    -webkit-transition-delay: 30ms;
+    -webkit-transform: translateX(102%);
+    -ms-transform: translateX(102%);
+    transform: translateX(102%);
+}
+.modal-detalle.active .cont-detalle{
+	-webkit-transition-delay: 300ms;
+    -webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    transform: translateX(0%);	
+}
+.modal-detalle .cont-detalle ul{
+	    padding: 5% 8%;
+}
+.modal-detalle .cont-detalle ul li{
+    font-size: 14px;
+    color: #fff;
+    padding: 5px;
+    font-family: 'OpelSansCondensedHeadline';
+    text-align: left;
+}
+.modal-detalle .cont-detalle .cerrar-detalle{
+	font-size: 24px;
+    color: #f7d900;
+    padding: 10px;
+    font-family: 'OpelSansCondensedHeadline';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: block;
+    text-decoration: none;
+}
+.modal-detalle .cont-detalle .cerrar-detalle:hover{
+	opacity: .5;
+}
+.modal-detalle .cont-detalle .tit-version{
+    color: #fff;
+    font-size: 18px;
+    padding: 18px 0 0 20px;
+    font-family: 'OpelSansCondensedHeadline';
+}
+.modal-detalle .cont-detalle .detalle-version{
+	display: none;
+}
+.modal-detalle .cont-detalle .detalle-version.active{
+	display: block;
+}
+.slider-mobile-content .hover-modelo{
+	opacity: 1;
+}
+#section3 .intro{
+	    position: relative;
+
+}
+.show-mobile{
+	display: none !important;
+}
+.col-cont{
+	background: #fff !important;
+	color: #000;
+	font-family: 'OpelSansCondensedHeadline';
+	font-size: 14px;
+}
+.col-cont.no-border{
+	border: 0;
+    border-bottom: 4px solid #f7d900;
+}
+.col-cont.gris{
+	background: #f5f5f5 !important;
+}
+.tabla{
+	width: 80%;
+	max-width: 1024px;
+    margin: auto;
+}
+.tabla .row{
+	margin-bottom: 0;
+}
+.tabla2{
+	margin-top: 2%;
+}
+.tabla h1{
+	color: #000;
+	font-family: 'OpelSansCondensedHeadline';
+	font-size: 2vw;
+	margin: 2% 0 2% 0;
+}
+.tabla .border-top{
+	border-top: 4px solid #f7d900 !important;
+}
+.table{
+	width: 99%;
+}
+.table td, .table th{
+	font-family: 'OpelSansCondensedHeadline';
+}
+.table .thead-light th {
+    color: #000;
+    background-color: #fff !important;
+    border-bottom: 4px solid #f7d900;
+    font-family: 'OpelSansCondensedHeadline';
+    border-top:#fff;
+}
+.table .align-left{
+	text-align: left;
+}
+/*******************************************/
+#section4{
+	background:#fff;
+	background-size: cover;
+	border-top: 2px solid #f7d900;
+}
+.slider-caracteristicas {
+    width: 98%;
+    margin: auto;
+}
+.slider-caracteristicas .tit-slide{
+	color: #000;
+    font-size: 32px;
+    margin-bottom: 1%;
+    font-family: 'OpelSansCondensedHeadline';
+    text-align: left;
+    padding-bottom: 5px;
+    border-bottom: 4px solid #f7d900;
+}
+.slider-caracteristicas p{
+    color: #000;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    display: block;
+    text-align: left;
+    padding: 0;
+    font-family: 'OpelSansCondensedHeadline';
+    font-weight: bold;
+    min-height: 35px;
+    display: block;
+}
+.slider-caracteristicas span{
+	color: #666;
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 10px;
+    line-height: 15px;
+    display: block;
+    text-align: left;
+    font-family: sans-serif;
+    padding: 0;
+}
+.slider-caracteristicas span b{
+	font-size: 10px;
+}
+.slider-caracteristicas [class*="col-"] {
+	border: 1px solid #eee;
+	background-color: #fff;
+}
+.slider-caracteristicas .intro{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.slider-caracteristicas img{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.slider-caracteristicas .fp-controlArrow.fp-next {
+    background-color: transparent;
+    background: url(../img/slick-next-black.png) no-repeat center center;
+    background-size: contain;
+    width: 80px;
+    height: 80px;
+    border: 0;
+    right: 3%;
+}
+.slider-caracteristicas .fp-controlArrow.fp-prev{
+	    background-color: transparent;
+    background: url(../img/slick-prev-black.png) no-repeat center center;
+    background-size: contain;
+        width: 80px;
+    height: 80px;
+    border: 0;
+    left: 3%;
+}
+.slider-caracteristicas.caract-mobile{
+	display: none;
+}
+.slider-caracteristicas.caract-mobile .slick-next {
+    background-color: transparent;
+    background: url(../img/slick-next-black.png) no-repeat center center;
+    background-size: contain;
+	width: 50px;
+    height: 50px;
+    position: absolute;
+    border: 0;
+    right: 7%;
+    bottom: -12%;
+    margin: auto;
+    text-indent: -1000px;
+    overflow: hidden;
+    z-index: 9999;
+    outline: 0;
+}
+.slider-caracteristicas.caract-mobile .slick-prev{
+	background-color: transparent;
+    background: url(../img/slick-prev-black.png) no-repeat center center;
+    background-size: contain;
+	width: 50px;
+    height: 50px;
+    position: absolute;
+    border: 0;
+    left: 7%;
+    bottom: -12%;
+    margin: auto;
+    text-indent: -1000px;
+    overflow: hidden;
+    z-index: 9999;
+    outline: 0;
+}
+
+/***********************************************/
+
+#instagramSection{
+	background:url('../img/BG_corsa_filter.jpg') no-repeat center center;
+    background-size: cover;
+    border-top: 2px solid #fff;
+    padding: 8.7% 0;
+}
+#instagramSection .cont-insta{
+	width: 30vw;
+    position: absolute;
+    left: 2%;
+    top: 4vw;
+}
+#instagramSection .cont-insta .tit-insta{
+    width: 100%;
+    max-width: 452px;
+    height: auto;
+    display: block;
+    padding-bottom: 5%;
+}
+#instagramSection .cont-insta .tit-insta img{
+	width: 100%;
+	display: block;
+}
+#instagramSection .cont-insta a.btn-insta{
+	background:url('../img/btn-filter-insta.png') no-repeat center center;
+    background-size: contain;
+    width: 80%;
+    max-width: 493px;
+    height: auto;
+    display: block;
+    padding-bottom: 8%;
+}
+#instagramSection .cont-insta a.btn-insta:hover{
+	opacity: .8;
+}
+#instagramSection a.ico-insta{
+	background:url('../img/IG_icon.png') no-repeat center center;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 2%;
+    bottom: 5%;
+    display: block;
+}
+
+/***********************************************/
+#testDrive{
+	background:url('../img/back-registro-test-dirve.jpg') no-repeat center center;
+    background-size: contain;
+    border-top: 2px solid #fff;
+    padding: 11.3% 0;
+}
+#testDrive .testDrive-cont{
+    width: 35vw;
+    max-width: 720px;
+    position: absolute;
+    right: 0;
+    top: 3vw;
+}
+#testDrive .testDrive-cont .tit-testDrive{
+	/*background:url('../img/Tit-Test-Drive.png') no-repeat center center;
+    background-size: contain;*/
+    width: 100%;
+    display: block;
+    margin-bottom: 4%;
+}
+#testDrive .testDrive-cont .tit-testDrive img{
+	width: 100%;
+	display: block;
+}
+#testDrive .testDrive-cont .form{
+	text-align: left;
+    padding: 0 0 0 2%;
+}
+#testDrive .testDrive-cont .email{
+    width: 240px;
+    height: 30px;
+    padding: 5px;
+    font-size: 16px;
+    color: #666;
+    font-family: 'OpelSansCondensedHeadline';
+}
+#testDrive .testDrive-cont .btn-enviar-test{
+    width: 160px;
+    display: inline-block;
+    background: #f7ff14;
+    height: 33px;
+    line-height: 33px;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 16px;
+    vertical-align: top;
+    font-family: 'OpelSansCondensedHeadline';
+    text-align: center;
+    text-decoration: none;
+}
+#testDrive .testDrive-cont .btn-enviar-test:hover{
+    background: #f7d900;
+    color: #000;
+    text-decoration: none;
+}
+#testDrive .testDrive-cont .form span{
+    color: #ccc;
+    font-size: 12px;
+    margin-top: 4%;
+    display: block;
+    font-family: 'OpelSansCondensedHeadline';
+}
+/*******************************************
+*******************************************/
+
+
+@media screen and (min-width: 1920px) {
+
+}
+@media screen and (max-width: 1280px) {
+	#compromisos1 .txt-cont {
+	    color: #fff;
+	    font-size: 1em;
+    }
+}
+@media screen and (max-width: 1200px) {
+	#compromisos1 .txt-cont {
+	    color: #fff;
+	    font-size: 1em;
+    }
+}
+@media screen and (max-width: 1024px) and (max-height: auto){
+	.version img {
+	    width: 38%;
+	}
+}
+@media screen and (max-width: 1024px) and (max-height: 1366px){
+	
+	#section0 .landing-cont .log-newcorsa{
+	    width: 45%;
+	    height: auto;
+	    padding-bottom: 20%;
+	    display: block;
+	    position: absolute;
+	    top: 10%;
+	}
+	#section0 .landing-cont .log-25und {
+	    width: 14%;
+	    height: auto;
+	    padding-bottom: 13%;
+	    display: block;
+	    position: absolute;
+	    top: 5%;
+	    right: 5%;
+	    display: none;
+    }
+	.slider-mobile-content{
+        display: block;
+    }
+    .thumb-cont{
+        display: none;
+    }
+    .version img {
+    	width: 78%;
+    }
+    .version h3{
+	    font-size: 24px;
+    }
+    .version h4 {
+	    color: #fff;
+	    font-size: 18px;
+	    text-align: center;
+	    margin-top: 5px;
+    }
+    .version p {
+	    color: #fff;
+	    font-size: 16px;
+	    text-align: center;
+	    margin-top: 5px;
+    }
+    .version .btn-reservar-v {
+	    width: auto;
+	    padding: 12px 40px;
+	    text-align: center;
+	    display: block;
+	    border: 1px solid #fff;
+	    text-transform: uppercase;
+	    color: #fff;
+	    text-decoration: none;
+	    font-size: 18px;
+	    display: inline-block;
+	    margin: 9px auto;
+    }
+    .version p.precio {
+    	font-size: 18px;
+	}
+	#section1 .versiones-cont .legales p {
+	    width: auto;
+	    text-align: left;
+	    font-size: 13px;
+    }
+    #section1 .versiones-cont .tit{
+	        font-size: 22px;
+    }
+    .fp-controlArrow.fp-prev{
+	    width: 80px;
+	    height: 80px;
+    }
+    #section2 .unboxing-cont .vid-cont {
+	    width: 55%;
+	    height: auto;
+	    margin-top: 3vw;
+    }
+    #section2 .unboxing-cont .txt-vid p{
+	    font-size: 16px;
+    }
+    #section1 .log-opelcl{
+	    width: 16%;
+	    height: auto;
+	    padding-bottom: 4%;
+	    bottom: 0;
+	    position: absolute;
+	    left: 0;
+    }
+    #section1 .log-opelblack{
+		width: 20%;
+		height: auto;
+		padding-bottom: 4%;
+    }
+}
+@media screen and (max-width: 1024px) and (max-height: 768px){
+	.version img {
+	    width: 35%;
+	}
+	#fp-nav{
+		display: none;	
+	}
+	#section0 .landing-cont .log-25und{
+		width: 14%;
+	    height: auto;
+	    padding-bottom: 13%;
+	    display: block;
+	    position: absolute;
+	    top: 10%;
+	    right: 5%;
+	    display: none;
+	}
+	#section0 .landing-cont .btn-reserva{
+		width: 20%;
+		height: auto;
+		padding-bottom: 4%;
+		display: block;
+		position: absolute;
+		top: 30%;
+		right: 3%;
+	}
+	#section0 .landing-cont .bottom-sect {
+    	width: 40%;
+    }
+    .version h3 {
+    	font-size: 18px;
+	}
+	.version h4 {
+	    color: #fff;
+	    font-size: 12px;
+	    text-align: center;
+	    margin-top: 4px;
+	}
+	.version p {
+	    color: #fff;
+	    font-size: 12px;
+	    text-align: center;
+	    margin-top: 1px;
+	}
+	.version .btn-reservar-v {
+	    width: auto;
+	    padding: 8px 30px;
+	    text-align: center;
+	    display: block;
+	    border: 1px solid #fff;
+	    text-transform: uppercase;
+	    color: #fff;
+	    text-decoration: none;
+	    font-size: 14px;
+	    display: inline-block;
+	    margin: 5px auto;
+	}
+	.version p.precio {
+    	font-size: 16px;
+	}
+	#section1 .versiones-cont .legales p {
+	    width: auto;
+	    text-align: left;
+	    font-size: 11px;
+	}
+	#compromisos1 .txt-cont {
+	    color: #fff;
+	        font-size: 14px;
+    }
+	#section2 .unboxing-cont .txt-vid p {
+		font-size: 13px;
+	}
+	.modal-detalle .cont-detalle{
+		width: 60%;
+	}
+	.modal-detalle .cont-detalle ul {
+    	padding: 3% 3%;
+	}
+	.modal-detalle .cont-detalle ul li{
+		margin-bottom: 4px;
+		font-size: 13px;
+	}
+	.version{
+		position: relative;
+	}
+	.thumb-auto .hover-modelo {
+    	background: url(../img/ico-plus.png) no-repeat 90% 90%;
+    	background-size: 3%;
+    }
+    .slide-thumbs-images-m{
+		display: block;
+	}
+	.slide-thumbs-images{
+		display: none;
+	}
+	#section2 h1 {
+	    display: block;
+	    position: relative;
+	    margin-top: 20px;
+	    width: 100%;
+	    position: relative;
+	}
+}
+
+@media screen and (max-width: 768px) and (max-height: 1024px) {
+	#fp-nav{
+		display: none;	
+	}
+	#section0 .landing-cont .btn-reserva{
+		width: 35%;
+	    height: auto;
+	    padding-bottom: 6%;
+	    display: block;
+	    position: absolute;
+	    top: initial;
+	    bottom: 24%;
+	}
+	.version img {
+	    width: 66%;
+	}
+	.version h3 {
+	    font-size: 20px;
+	}
+	.version h4 {
+	    color: #fff;
+	    font-size: 14px;
+    }
+    .version p {
+	    color: #fff;
+	    font-size: 14px;
+	    text-align: center;
+	    margin-top: 2px;
+	}
+	#section2 .unboxing-cont .vid-cont {
+	    width: 60%;
+	    height: auto;
+	    margin-top: 3vw;
+	}
+	#section2 .unboxing-cont .txt-vid p {
+    	font-size: 14px;
+	}
+	#section0 .landing-cont .bottom-sect {
+	    width: 52%;
+	    position: absolute;
+	    bottom: 3%;
+    }
+    #section2 h1 {
+	    display: block;
+	    position: relative;
+	    margin-top: 20px;
+	    width: 100%;
+	    position: relative;
+	}
+    .fp-slide, .fp-slidesContainer{
+	    position: relative;
+    }
+    .modal-detalle .cont-detalle{
+	    width: 60%;
+    }
+    .thumb-auto .hover-modelo {
+    	background: url(../img/ico-plus.png) no-repeat 90% 90%;
+    	background-size: 6%;
+    }
+    .version{
+	    position: relative;
+    }
+    .slide-thumbs-images-m{
+		display: block;
+	}
+	.slide-thumbs-images{
+		display: none;
+	}
+	.wrapper-compromisos .comp-block .text-cont p {
+	    color: #fff;
+	    font-size: 14px;
+    }	
+}
+/* Mobile */
+
+@media screen and (max-width: 800px) {
+	.wrapper-compromisos .comp-block .text-cont p {
+	    color: #fff;
+	    font-size: 14px;
+	}
+	#compromisos1 .txt-cont {
+	    color: #fff;
+	    font-size: 14px;
+	    line-height: 16px;
+	    width: 50%;
+	    margin-left: 4%;
+	}
+	.wrapper-compromisos .comp-block .btn-plus{
+	    width: 20px;
+		height: 20px;
+	}
+	.wrapper-compromisos .comp-block .btn-plus:before {
+	    content: 'ver detalle';
+	    position: absolute;
+	    left: -38px;
+	    bottom: -16px;
+	    font-family: 'OpelSansCondensedHeadline';
+	    font-size: 10px;
+	    width: 100px;
+	}
+}
+@media screen and (max-width: 700px) {
+	#fp-nav{
+		display: none;	
+	}
+    #section0 {
+        background: url('../img/back-newcorsa2021-section1-mobile.jpg') no-repeat top center;
+        background-size: cover;
+    }
+    #section0 .tit-home-m{
+    	background: url('../img/tit-home-mobile.png') no-repeat center center;
+    	background-size: contain;
+	    width: 70%;
+	    padding-bottom: 5%;
+	    position: absolute;
+	    left: 0;
+	    right: 0;
+	    margin: auto;
+	    top: 70%;
+    }
+    #section0 .landing-cont .log-newcorsa {
+	    width: 68%;
+	    height: auto;
+	    padding-bottom: 32%;
+	    top: 60px;
+	    right: 0;
+	    left: 0;
+	    margin: auto;
+	}
+	    .wrapper-compromisos .comp-block.bl2{
+		border-top: 1px solid #fff;
+	    border-bottom: 1px solid #fff;
+	}
+    .landing-cont .log-newcorsa {
+	    width: 32%;
+	    height: auto;
+	    padding-bottom: 32%;
+	    top: 50px;
+	    right: 8%;
+	    left: initial;
+	}
+    .header{
+    	height: 34px;
+    }
+    .header .ico{
+    	width: 34px;
+    	height: 34px;
+    	display: none;
+    }
+    .header .logo-container .logo-header {
+	    height: 34px;
+	    width: auto;
+	}
+	.header .ico-mobile{
+		display: block;
+	}
+	
+    .menu-nav{
+	    display: none;
+    }
+    .menu-nav-mobile{
+	    display: block;
+    }
+    .menu-nav-mobile{
+		display: block; 
+    }
+    #section0 .landing-cont .log-25und{
+	    width: 21%;
+	    height: auto;
+	    padding-bottom: 24%;
+	    display: block;
+	    position: absolute;
+	    top: 50px;
+	    right: 4%;
+	    display: none;
+    }
+    #section0 .header .logo-container .logo-header {
+	    height: 34px;
+	    width: auto;
+	}
+
+	#section0 .landing-cont .log-newcorsa {
+		width: 50%;
+		height: auto;
+		padding-bottom: 24%;
+		left: 0;
+		top: 10%;
+		right: 0;
+		margin: auto;
+    }
+    #section0 .landing-cont .bottom-sect .thumbs-specs{
+        display: none;
+    }
+    #section0 .landing-cont .btn-reserva{
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: 71%;
+        width: 100%;
+        padding-bottom: 9%;
+        background: transparent;
+    }
+    #section0 .landing-cont .bottom-sect{
+        width: 45%;
+        position: absolute;
+        bottom: 0%;
+    }
+    #section0 .landing-cont .bottom-sect .btn-cart{
+        width: 100%;
+        height: auto;
+        padding-bottom: 28%;
+        display: block;
+        margin: 2% auto 0 auto;
+        background: transparent;
+    }
+    #section1 .thumb-cont {
+        width: 90%;
+        height: 70%;
+        position: relative;
+        margin: auto;
+    }
+    .slider-mobile-content{
+        display: block;
+        padding: 20% 0;
+    }
+    .thumb-cont{
+        display: none;
+    }
+    #section1 .versiones-cont .tit{
+	    font-size: 14px;
+	    margin-top: 4%;
+	    margin-left: 4%;
+	    display: block;
+	    margin-bottom: 10px;
+	    float: initial;
+    }
+    .version h3{
+        font-size: 15px;
+    }
+    .version h4{
+		font-size: 11px;
+		margin-top: 4px;
+    }
+    .version p{
+	    font-size: 9px;
+	    margin-top: 0px;
+    }
+    .version .btn-reservar-v{
+        padding: 0;
+        width: 148px;
+        height: 24px;
+        line-height: 24px;
+        font-size: 12px;
+        display: block;
+        margin: 3px auto;
+        z-index: 99999;
+    }
+    .version p.precio {
+        font-size: 14px;
+        margin-top: 8px;
+    }
+    .version img {
+	    width: 64%;
+	    display: block;
+	    margin: 0% auto 1% auto;
+    }
+    #section2 .unboxing-cont .tit-unboxing{
+		width: 24%;
+	    height: auto;
+	    padding-bottom: 15%;
+	    display: block;
+	    margin: 3% auto;
+	    vertical-align: middle;
+    }
+    #section2 .unboxing-cont .vid-cont {
+	    width: 90%;
+	    height: auto;
+	    margin-top: 2%;
+	}
+    #section2 .unboxing-cont .ico-vid {
+	    width: 24px;
+	    height: 24px;
+	    display: none;
+	}
+    #section2 .unboxing-cont .txt-vid p{
+        font-size: 10px;
+    }
+    #section1 .log-opelcl{
+           width: 20%;
+    height: auto;
+    }
+    #section1 .log-opelblack{
+        width: 20%;
+    height: auto;
+    padding-bottom: 6%;
+    }
+    .cont-modal{
+        width: 80%;
+        height: 30%;
+    }
+    .fp-controlArrow.fp-prev {
+	    width: 50px;
+	    height: 50px;
+	}
+	#section2 .unboxing-cont .txt-vid p {
+	    font-size: 9px;
+	    margin-top: 0;
+	}
+	.modal-detalle .cont-detalle{
+		width: 70%;
+	}
+	.modal-detalle .cont-detalle .tit-version {
+	    color: #fff;
+	    font-size: 13px;
+	    padding: 18px 0 0 10px;
+    }
+    .modal-detalle .cont-detalle ul {
+    	padding: 5% 3%;
+	}
+	.modal-detalle .cont-detalle ul li {
+	    font-size: 9px;
+	    color: #fff;
+	    padding: 2px 5px;
+    }
+    .fp-slide, .fp-slidesContainer{
+	    position: relative;
+    }
+    .slider-mobile-content .hover-modelo {
+    	opacity: 1;
+    	background: url(../img/ico-plus.png) no-repeat 90% 90%;
+    background-size: 10%;
+	}
+	.slider-showroom .fp-controlArrow.fp-prev{
+		bottom: 4%;
+	    position: absolute;
+	    top: initial;
+	    width: 50px;
+	    height: 50px;
+	    left: 25%;
+	}
+	.slider-showroom .fp-controlArrow.fp-next{
+		bottom: 4%;
+	    position: absolute;
+	    top: initial;
+	    width: 50px;
+	    height: 50px;
+	    right: 25%;
+	}
+	#section2 h1 {
+	      display: block;
+    margin-top: 20px;
+    width: 100%;
+    position: relative;
+    float: initial;
+    font-size: 16px;
+    display: none;
+	}
+	.slide-thumbs-images-m{
+		display: block;
+		margin-bottom: 30px;
+		padding-bottom: 30px;
+	}
+	.slide-thumbs-images{
+		display: none;
+	}
+	/*.slider-showroom img {
+    	width: auto;
+		height: 90vh;
+		margin: auto;
+    }*/
+	.hide-mobile{
+		display: none !important;
+	}
+	.show-mobile{
+		display: block !important;
+	}
+	.tabla h1{
+		font-size: 14px;
+	}
+	.table .thead-light th, .table td, .table th{
+		font-size: 12px;
+	}
+	.table td, .table th {
+    	padding: .55rem;
+    }
+	.table-responsive{
+		overflow-x:scroll;
+	}
+	.slider-caracteristicas{
+		display: none;
+	}
+	.slider-caracteristicas.caract-mobile{
+		display: block !important;
+	}
+	.slider-caracteristicas .tit-slide{
+		    margin-top: 45px;
+    font-size: 18px;
+	}
+	.slider-caracteristicas p{
+		font-size: 16px;
+		min-height: auto;
+	}
+	.slider-caracteristicas span{
+	    font-size: 14px;
+    margin-top: 10px;
+    line-height: 15px;
+	}
+	.slider-caracteristicas.caract-mobile .slick-next,
+	.slider-caracteristicas.caract-mobile .slick-prev{
+		width: 30px;
+		height: 30px;
+		bottom: -10px;
+	}
+	.tabla {
+    	width: 92%
+    }
+    .slider-caracteristicas span b{
+		font-size: 8px;
+	}
+	#section0 .info-back{
+		display: none;
+	}
+	#compromisos1{
+		background-position:center 80%;
+	    background-size: cover;
+	    position: relative;
+	    padding: 42% 0;	
+	}
+	#compromisos1 .tit-compromisos {
+	    background-size: contain;
+	    width: 72%;
+	    height: auto;
+	    padding-bottom: 0;
+	    margin: 3% auto;
+	    display: block;
+	    z-index: 1;
+	    position: absolute;
+	    left: 0;
+	    right: 0;
+	    top: 20%;
+	}
+	#compromisos1 .txt-cont {
+		color: #fff;
+	    font-size: 13px;
+	    text-align: center;
+	    margin-left: auto;
+	    margin: auto;
+	    width: 70%;
+	    padding-bottom: 3%;
+	    line-height: 1.3em;
+	    z-index: 11;
+	    font-family: 'OpelSansCondensedHeadline';
+	    position: absolute;
+	    left: 0;
+	    right: 0;
+	    z-index: 1;
+	    top: 55%;
+	}
+	.back-opacity{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top:0;
+		z-index: 0;
+		background: rgb(0 0 0 / 40%);
+	}
+	.wrapper-compromisos {
+	    grid-template-columns: 100%;
+	}
+	.wrapper-compromisos .comp-block.b-center:before,
+	.wrapper-compromisos .comp-block.b-center:after{
+		visibility: hidden;
+	}
+	#section0 .landing-cont .btn-cotizar{
+	    width: 50%;
+	    padding-bottom: 6%;
+	    height: auto;
+	    left: 0;
+	    right: 0;
+	    bottom: 12%;
+	    top: initial;
+	    margin: auto;
+	}
+	#section2 .unboxing-cont{
+	    text-align: center;
+		padding: 5% 0 10% 0;	
+	}
+	#testDrive .testDrive-cont {
+		width: 90%;
+		top: initial;
+		bottom: 20%;
+    }
+    .wrapper-compromisos .comp-block {
+	    background-color: #000;
+	    color: #fff;
+	    padding: 10% 5% 20% 5%;
+	    font-size: 130%;
+    }
+    .wrapper-compromisos .comp-block .btn-plus{
+	    width: 25px;
+	    height: 25px;
+	    color: #fff;
+	    display: inline-block;
+	    text-transform: uppercase;
+	    position: relative;
+	    margin: 4px auto;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+    }
+    .wrapper-compromisos .comp-block .text-cont {
+	    width: 80%;
+	    margin: 5% auto;
+	    padding: 2%;
+	    position: relative;
+	}
+    .wrapper-compromisos .comp-block .btn-plus:before {
+	    content: 'ver detalle';
+	    position: absolute;
+	    left: -35px;
+	    bottom: -20px;
+	    font-family: 'OpelSansCondensedHeadline';
+	    font-size: 12px;
+	    width: 100px;
+	}
+	#testDrive {
+	    background: url('../img/back-registro-test-dirve.jpg') no-repeat 0 0;
+	    background-size: cover;
+	    border-top: 2px solid #fff;
+	    padding: 40% 0;
+	}
+	#testDrive:before {
+	    content: '';
+	    width: 100%;
+	    height: 100%;
+	    background: rgb(0 0 0 / 68%);
+	    position: absolute;
+	    left: 0;
+	    top: 0;
+	}
+	#instagramSection {
+	    background: url('../img/back-instagram-section.jpg') no-repeat 80% 0;
+	    background-size: cover;
+	    border-top: 2px solid #fff;
+	    padding: 40% 0;
+	}
+	#instagramSection:before {
+	    content: '';
+	    width: 100%;
+	    height: 100%;
+	    background: rgb(0 0 0 / 68%);
+	    position: absolute;
+	    left: 0;
+	    top: 0;
+	}
+	#instagramSection .cont-insta {
+	    width: 80vw;
+	    position: absolute;
+	    left: 5%;
+	    top: 16vw;
+	}
+	#instagramSection a.ico-insta{
+		width: 42px;
+		width: 42px;
+	}
+}
+@media screen and (max-width: 480px) {
+    #section0 .landing-cont .log-newcorsa {
+	    width: 68%;
+	    height: auto;
+	    padding-bottom: 32%;
+	    top: 60px;
+	    right: 0;
+	    left: 0;
+	    margin: auto;
+    }
+    #section1 .versiones-cont .tit {
+	    font-size: 14px;
+	    margin-top: 4%;
+	    margin-left: 4%;
+	    display: block;
+	    margin-bottom: 10px;
+	    float: initial;
+	}
+    #section1 .versiones-cont .tit a{
+        font-size: 9px;
+    }
+  
+    #section0 .landing-cont .log-25und{
+
+    
+	   width: 21%;
+	    height: auto;
+	    padding-bottom: 24%;
+	    display: block;
+	    position: absolute;
+	    top: 50px;
+	    right: 4%;
+	    display: none;
+    }
+	#section0 .landing-cont .btn-reserva {
+	    left: 0;
+	    right: 0;
+	    margin: auto;
+	    top: 67%;
+	    width: 100%;
+	    padding-bottom: 13%;
+	    background: transparent;
+	}
+	.rayo-back{
+		display: none;
+	}
+	#section2 .unboxing-cont .txt-vid p {
+    	font-size: 9px;
+	}
+	/*#section1 .unboxing-cont .ico-vid{
+		width: 24px;
+		height: 24px;	
+	}*/
+	#section1 .versiones-cont .legales{
+		bottom: 14px;
+	}
+	#section1 .versiones-cont .legales p{
+		font-size: 9px;
+	}
+	.cont-video {
+    	width: 80%;
+    	height: 50.5vw;
+    }
+    .modal-video .cont-video .btn-closevid{
+	    font-size: 20px;
+	    text-align: center;
+	    line-height: 30px;
+	    position: absolute;
+	    top: -14%;
+    }
+    .section .log-opelcl{
+	        width: 90px;
+			height: 18px;
+    }
+    .section .log-opelblack{
+		width: 90px;
+		height: 28px;
+    }
+    .arrow-down{
+	    width: 8% !important;
+		padding-bottom: 7%;   
+    }
+    #testDrive .testDrive-cont .btn-enviar-test {
+	    width: 130px;
+	    height: 30px;
+	    line-height: 30px;
+	    font-size: 14px;
+    }
+    #instagramSection .cont-insta {
+	    width: 80vw;
+	    position: absolute;
+	    left: 5%;
+	    top: 16vw;
+	}
+	#instagramSection a.ico-insta {
+	    width: 33px;
+	    height: 33px;
+	    position: absolute;
+	    right: 4%;
+	    bottom: 6%;
+	    display: block;
+	}
+	.wrapper-compromisos .comp-block:hover {
+	    filter: none !important;
+	    -webkit-filter: grayscale(0%);
+	    -moz-filter: grayscale(0%);
+	    -ms-filter: grayscale(0%);
+	    filter: grayscale(0%);
+	    filter: inherit !important;
+	    background-size: cover;
+	}
+}
+@media screen and (max-width: 390px) {
+	#section0 .landing-cont .log-newcorsa {
+	    width: 68%;
+	    height: auto;
+	    padding-bottom: 32%;
+	    top: 60px;
+	    right: 0;
+	    left: 0;
+	    margin: auto;
+    }
+    .cont-video {
+    	width: 80%;
+    	height: 50.5vw;
+    }
+    .slider-caracteristicas .tit-slide{
+		margin-top: 45px;
+		font-size: 14px;
+	}
+	.slider-caracteristicas p{
+		font-size: 14px;
+		min-height: auto;
+	}
+	.slider-caracteristicas span{
+	    font-size: 12px;
+	    margin-top: 10px;
+	    line-height: 13px;
+	
+	}
+	#instagramSection .cont-insta {
+	    width: 80vw;
+	    position: absolute;
+	    left: 5%;
+	    top: 16vw;
+	}
+	.wrapper-compromisos .comp-block .text-cont.textA {
+	    width: 280px;
+	    height: 90px;
+	    margin: 8% auto;
+	    padding: 3% 4%;
+    }
+	.wrapper-compromisos .comp-block .text-cont.textB {
+	    width: 280px;
+	    height: 90px;
+	    margin: 8% auto;
+	    padding: 3% 4%;
+    }
+    .wrapper-compromisos .comp-block .text-cont .btn-comp.btn-flex {
+	    display: inline-block;
+	    left: -48%;
+	    font-size: 11px;
+	    width: 100px;
+	}
+	.wrapper-compromisos .comp-block .text-cont .btn-comp.btn-acc {
+	    display: inline-block;
+	    right: -44%;
+	    font-size: 11px;
+	    width: 100px;
+	}
+	#testDrive .testDrive-cont .form span {
+	    color: #ccc;
+	    font-size: 9px;
+    }
+    #testDrive .testDrive-cont .btn-enviar-test {
+	    width: 130px;
+	    height: 30px;
+	    line-height: 30px;
+	    font-size: 12px;
+	}
+	.wrapper-compromisos .comp-block .ico-titulo {
+	    width: 80%;
+	    max-width: 388px;
+	    display: inline-block;
+	}
+	.wrapper-compromisos .comp-block .text-cont .btn-comp{
+		font-size: 13px;
+	}
+	.wrapper-compromisos .comp-block .text-cont.textB p {
+	    font-size: 14px;
+	    position: relative;
+	    top: 5px;
+	}
+}
+@media screen and (max-height: 620px) {
+	#section1 .thumb-cont .thumb-auto{
+	    width: 80%;
+	    display: block;
+	    margin: auto;
+	}
+}
